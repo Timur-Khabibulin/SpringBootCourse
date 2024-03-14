@@ -7,8 +7,6 @@ import com.example.springbootcourse.service.DishService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
@@ -26,10 +24,5 @@ public class FoodController {
     @GetMapping("/exc")
     public String getCustomException() throws MyException {
         throw new MyException("You got a 502 error. Takie dela");
-    }
-
-    @ExceptionHandler(MyException.class)
-    public ResponseEntity<String> handleException(MyException e) {
-        return new ResponseEntity<>(e.getMessage(), HttpStatusCode.valueOf(502));
     }
 }
